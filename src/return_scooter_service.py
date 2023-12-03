@@ -34,16 +34,12 @@ class ReturnScooterService:
 
         if minutes >= 50 or charge_amount > 30:
             loyalty_points = 20
+        print(price, needs_to_charge_battery, loyalty_points)
+        return price, needs_to_charge_battery, loyalty_points
 
-        self.__saveInDatabase(loyalty_points, charge_amount, needs_to_charge_battery, immediate_transactions_counter)
-
-
-    def __saveInDatabase(self, loyaltyPoints, chargeAmount, needsToChargeBattery, immediateTransactionsCounter):
-        #zapis wszystkigo do bazy danych
-        pass
-
-    def __charge_client(self, clientId, chargeAmount):
-        #obciążenie karty kredytowej
+    @classmethod
+    def __charge_client(cls, client_id, charge_amount):
+        # obciążenie karty kredytowej
         pass
 
 
