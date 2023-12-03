@@ -1,17 +1,21 @@
 import pytest
 
-from src.return_scooter_service import ReturnScooterService
+from src.client import Client
+from src.return_scooter_service import ReturnScooterService, Position
+from src.scooter import Scooter
+
+honda = Scooter(scooter_id=1, scooter_data=["not_fast", 1, 2, 3, 5], battery_level=0.1)
+john_smith = Client(client_id=1, client_credit=0, loyalty_points=1, is_immediate=True,
+                    immediate_transactions_counter=1, client_price_multiplier=1)
+big_ben = Position()
 
 data = [
-    [1, 1, 1, 25, 0.1, ["not_fast", 1, 2, 3, 5], 1, True, 1, (46, False, 20)]
+    [honda, john_smith, big_ben, 20, (36.9, False, 2)]
 ]
 
 
-@pytest.mark.parametrize("ci, si, p, m, bl, sd, cc, cwip, itc, expected", data)
-def test_e2e_return_scooter(ci, si, p, m, bl, sd, cc, cwip, itc, expected):
-    scooter_info = ReturnScooterService.return_scooter(client_id=ci, scooter_id=si, position=p,
-                                                       minutes=m, battery_level=bl, scooter_data=sd,
-                                                       client_credit=cc,
-                                                       client_with_immediate_payment=cwip,
-                                                       immediate_transactions_counter=itc)
-    assert scooter_info == expected
+@pytest.mark.parametrize("scooter, client, where, minutes, expected", data)
+def test_e2e_return_scooter(scooter, client, where, minutes, expected):
+    return_scooter = ReturnScooterService().return_scooter(scooter=scooter, client=client,
+                                                           where=where, minutes=minutes)
+    assert return_scooter == expected
