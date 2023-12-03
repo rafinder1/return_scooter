@@ -2,11 +2,10 @@ from src.return_scooter_service import Position
 
 
 class Scooter:
-    def __init__(self, scooter_id, scooter_data, battery_level):
+    def __init__(self, scooter_id: int, scooter_data: list, battery_level: float):
         self.scooter_id: int = scooter_id
         self.scooter_data: list = scooter_data
         self.battery_level: float = battery_level
-        self.schedule_for_maintenance = None
 
     def price(self, minutes: int) -> float:
         unlocking = float(self.scooter_data[1]) if self.scooter_data[0] == "not_fast" else float(
