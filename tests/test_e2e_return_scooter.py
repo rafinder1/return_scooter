@@ -8,7 +8,7 @@ data = [
 
 
 @pytest.mark.parametrize("ci, si, p, m, bl, sd, cc, cwip, itc, expected", data)
-def test_calculate_sheet_x_from_mileage_mm(ci, si, p, m, bl, sd, cc, cwip, itc, expected):
+def test_e2e_return_scooter(ci, si, p, m, bl, sd, cc, cwip, itc, expected):
     scooter_info = ReturnScooterService.return_scooter(client_id=ci, scooter_id=si, position=p,
                                                        minutes=m, battery_level=bl, scooter_data=sd,
                                                        client_credit=cc,
