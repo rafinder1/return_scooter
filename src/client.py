@@ -29,5 +29,5 @@ class Client:
             loyalty_points = 20
         return loyalty_points
 
-    def is_immediate(self) -> bool:
+    def get_is_immediate(self) -> bool:
         return self.is_immediate
