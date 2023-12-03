@@ -16,9 +16,10 @@ class Scooter:
         return minutes * price_per_minute + unlocking
 
     def schedule_for_maintenance(self, where: Position) -> bool:
+        schedule_for_maintenance = False
         if self.battery_level < 0.07:
-            self.schedule_for_maintenance = True
-        return self.schedule_for_maintenance
+            schedule_for_maintenance = True
+        return schedule_for_maintenance
 
     def description(self) -> str:
         return f"{self.scooter_id} {str(self.scooter_data[0])}"
