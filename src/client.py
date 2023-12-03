@@ -1,6 +1,7 @@
 class Client:
-    def __init__(self, client_id, client_credit, loyalty_points, is_immediate,
-                 immediate_transactions_counter, client_price_multiplier):
+    def __init__(self, client_id: int, client_credit: float, loyalty_points: int,
+                 is_immediate: bool, immediate_transactions_counter: int,
+                 client_price_multiplier: float):
         self.client_id: int = client_id
         self.client_credit: float = client_credit
         self.loyalty_points: int = loyalty_points
